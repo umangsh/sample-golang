@@ -84,10 +84,6 @@ func main() {
 	})
 
 	port := os.Getenv("PORT")
-	if port == "" {
-		port = "3333"
-	}
-
 	for _, encodedRoute := range strings.Split(os.Getenv("ROUTES"), ",") {
 		if encodedRoute == "" {
 			continue
