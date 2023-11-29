@@ -2,13 +2,12 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 	"strconv"
 	"strings"
 
-	"github.com/joho/godotenv"
+	_ "github.com/joho/godotenv/autoload"
 )
 
 func logRequest(r *http.Request) {
@@ -18,11 +17,6 @@ func logRequest(r *http.Request) {
 }
 
 func main() {
-	enverr := godotenv.Load()
-	if enverr != nil {
-		log.Fatal("Error loading .env file")
-	}
-
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		logRequest(r)
 		fmt.Fprintf(w, "Hello! you've requested %s\n", r.URL.Path)
